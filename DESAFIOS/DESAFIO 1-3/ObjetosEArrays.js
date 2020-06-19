@@ -19,7 +19,7 @@ const usuarios = [
   
   function imprimeMensagem (usuario){
           for (i = 0; i < usuario.length; i++ ){
-              mensagem = (`${usuario[i].nome} trabalha com ${usuario[i].tecnologias}`);
+              mensagem = (`${usuario[i].nome} trabalha com ${usuario[i].tecnologias.join(", ")}`);
               console.log(mensagem);
           }
   // Esse return com string vazia foi colocado na função para ela não retornar undefined
