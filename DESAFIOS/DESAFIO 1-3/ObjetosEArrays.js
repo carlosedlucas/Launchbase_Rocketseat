@@ -17,14 +17,7 @@ const usuarios = [
     { nome: "Tuane", tecnologias: ["HTML", "Node.js"] }
   ];
   
-  function imprimeMensagem (usuario){
-          for (i = 0; i < usuario.length; i++ ){
-              mensagem = (`${usuario[i].nome} trabalha com ${usuario[i].tecnologias.join(", ")}`);
-              console.log(mensagem);
-          }
-  // Esse return com string vazia foi colocado na função para ela não retornar undefined
-          return "";
-      }
+for (let usuario of usuarios){
+    console.log(`${usuario.nome} trabalha com ${usuario.tecnologias.join(", ")}`);
+}
   
-  
-  console.log (imprimeMensagem(usuarios));
