@@ -1,20 +1,23 @@
-// Programa para cáulo de IMC e níve de obesidade de uma pessoa
+const pessoa = [{ nome: 'Carlos Eduardo', peso: 95, altura: 1.82 }];
 
-const pessoa = [
-    {nome: "Carlos Eduardo",
-    peso: 90,
-    altura: 1.82
-    }
-]
-
-const imc = pessoa[0].peso / (pessoa[0].altura*pessoa[0].altura);
-
-let mensagem = "";
-
-if (imc >= 30){
-    mensagem = (`${pessoa[0].nome}, você está acima do peso`);
-} else {
-    mensagem = (`${pessoa[0].nome}, você não está acima do peso`);
+function calcImc(peso, altura) {
+  const imc = peso / (altura * altura);
+  return imc;
 }
 
-console.log(mensagem);
+for (let medidas of pessoa) {
+  let resultado = calcImc(medidas.peso, medidas.altura);
+  if (resultado > 30) {
+    console.log(
+      `${medidas.nome} você está acima do peso e seu imc é ${resultado.toFixed(
+        2
+      )}`
+    );
+  } else {
+    console.log(
+      `${
+        medidas.nome
+      } você não está acima do peso seu imc é ${resultado.toFixed(2)}`
+    );
+  }
+}

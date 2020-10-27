@@ -1,36 +1,26 @@
-// Programa para cáulo de aposentadoria  e níve de obesidade de uma pessoa
+const infoUsuario = [
+  { nome: 'Joan Jett', sexo: 'F', idade: 62, contribuicao: 53 },
+  { nome: 'Jimmy Hendrix', sexo: 'M', idade: 27, contribuicao: 263 },
+  { nome: 'Kurt Kobain', sexo: 'A', idade: 27, contribuicao: 23 },
+];
 
-const pessoa = [
-    {nome: "Robert Plant",
-    sexo: "M",
-    idade: 71,
-    contribuicao: 35
-}
-]
-
-// O tempo de contribuição mínimo para homens é de 35 anos e, para mulheres, 30 anos;
-// Utilizando a regra 85-95, a soma da idade com o tempo de contribuição do homem precisa ser de no mínimo 95 anos, enquanto a mulher precisa ter no mínimo 85 anos na soma;
-// Com base nas regras acima imprima na tela as mensagens:
-
-// SE a pessoa estiver aposentada: Silvana, você pode se aposentar!;
-// SE a pessoa NÃO estiver aposentada: Silvana, você ainda não pode se aposentar!;
-
-let tempoContribuicao = pessoa[0].contribuicao;
-let sexo = pessoa[0].sexo;
-let idade = pessoa[0].idade;
-let regraSoma = (tempoContribuicao + idade);
-
-// Tem que satisfazer as três condições para a mensagem de aposentadoria ser afirmativa: 
-
-if (sexo === "F" && tempoContribuicao >= 30 && regraSoma >= 85){
-    mensagem = (`${pessoa[0].nome}, você pode se aposentar!`)       		
-} else if (sexo === "M" && tempoContribuicao >= 35 && regraSoma >= 95) {
-    mensagem = (`${pessoa[0].nome}, você pode se aposentar!`)
-} else {
-    mensagem = (`${pessoa[0].nome}, você ainda não pode se aposentar!`)
+function regraAposentadoria(idade, contribuicao) {
+  let soma = idade + contribuicao;
+  return soma;
 }
 
-console.log (mensagem);
-
-
-
+for (let usuario of infoUsuario) {
+  let resultado = regraAposentadoria(usuario.idade, usuario.contribuicao);
+  let mulher = usuario.sexo == 'F' && resultado >= 85;
+  let homem = usuario.sexo == 'M' && resultado >= 95;
+  let dadoCorreto = usuario.sexo == 'F' || usuario.sexo == 'M';
+  if (mulher) {
+    console.log(`${usuario.nome} você pode se aposentar!`);
+  } else if (homem) {
+    console.log(`${usuario.nome} você pode se aposentar!`);
+  } else if (!dadoCorreto) {
+    console.log(`Dados incongruentes!`);
+  } else {
+    console.log(`${usuario.nome} você não pode se aposentar!`);
+  }
+}
