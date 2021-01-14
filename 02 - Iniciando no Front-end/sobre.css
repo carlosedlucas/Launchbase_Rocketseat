@@ -51,8 +51,9 @@ nav a {
   font-weight: bold;
 }
 
-.contentImages {
+.containerImages {
   display: flex;
+  flex: 1;
 }
 
 .contentImages {
